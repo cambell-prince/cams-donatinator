@@ -1,20 +1,136 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<form>
+<div class="container additional-page">
+  <div class="row">
+    <div class="col-md">
+      <div class="container additional-container">
+        <img class="heart-image icon-baseline" height="100" width="107" src="/assets/heart.svg">
+        <img class="heart-image icon-variant" height="100" width="107" src="/assets/pixel-heart.svg">
+        <div>
+          <img class="mozilla-watermark" src="/assets/images/mozilla.1068965acefde994a71c187d253aca2b.svg">
+          <span>We are proudly non-profit, non-corporate and non-compromised. Thousands of people like you help us stand up for an open Web for all. We rely on donations to carry out our mission to keep the Web open and free. Will you give today?</span>
+        </div>
+      </div>
+    </div>
+    <div class="col main-page">
+      <div class="container">
+        <div class="row">
+          <div class="col-8">
+            <h3 class="donate-now-header">Donate now</h3>
+          </div>
+          <div class="col-4">
+            <select name="currency" class="form-control currency-dropdown" [(ngModel)]="model.currency" (change)="updateAmounts()">
+              <option *ngFor="let c of currencies" value="{{c}}">{{c}} &nbsp; {{currencySymbols[c]}}</option>
+            </select>
+          </div>
+          </div>
+        <div class="row">
+          <div class="col one-time">
+            <input type="radio" class="form-control" name="frequency" class="one-time-payment" value="single" [(ngModel)]="model.frequency" (change)="updateAmounts()" id="one-time-payment-undefined">
+            <label for="one-time-payment-undefined" class="medium-label-size">One time</label>
+          </div>
+          <div class="col">
+            <input type="radio" class="form-control" name="frequency" class="monthly-payment" value="monthly" [(ngModel)]="model.frequency" (change)="updateAmounts()" id="monthly-payment-undefined">
+            <label for="monthly-payment-undefined" class="medium-label-size">Monthly</label>
+          </div>
+          <div class="col"></div>
+        </div>
+          <div class="row donation-amount-row">
+            <div class="col">
+              <label for="pay-0" class="btn-lg btn-secondary amount-button amount-control large-label-size">
+                <span>{{currencySymbols[model.currency]}}{{amounts[0]}}</span>
+                <input type="radio" class="amount-radio" name="pay_selection" value="0" [(ngModel)]="model.paySelection" id="pay-0">
+              </label>
+            </div>
+            <div class="col">
+              <label for="pay-1" class="btn-lg btn-secondary amount-button amount-control large-label-size">
+                <span>{{currencySymbols[model.currency]}}{{amounts[1]}}</span>
+                <input type="radio" class="amount-radio" name="pay_selection" value="1" [(ngModel)]="model.paySelection" id="pay-1">
+              </label>
+            </div>
+            <div class="col">
+              <label for="pay-2" class="btn-lg btn-secondary amount-button amount-control large-label-size">
+                <span>{{currencySymbols[model.currency]}}{{amounts[2]}}</span>
+                <input type="radio" class="amount-radio" name="pay_selection" value="2" [(ngModel)]="model.paySelection" id="pay-2">
+              </label>
+            </div>
+          </div>
+          <div class="row donation-amount-row">
+            <div class="col-4">
+              <label for="pay-3" class="btn-lg btn-secondary amount-button amount-control large-label-size">
+                <span>{{currencySymbols[model.currency]}}{{amounts[3]}}</span>
+                <input type="radio" class="amount-radio" name="pay_selection" value="3" [(ngModel)]="model.paySelection" id="pay-3">
+              </label>
+            </div>
+            <div class="col-8">
+              <div class="amount-other-container amount-control">
+                <!-- <label for="amount-other" class="btn-lg btn-secondary amount-button amount-control large-label-size" id="amount-other-label"> -->
+                  <input type="radio" class="amount-radio amount-control" id="pay-other" name="pay_selection" value="other">
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1">{{currencySymbols[model.currency]}}</span>
+                      <input type="text" class="form-control" placeholder="Other amount" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                <!-- </label> -->
+              </div>
+              <!-- <div class="row">
+                <div class="col">
+                  {{model.paySelection}}
+                </div>
+              </div> -->
+<!--                 
+                
+                <label for="amount-other"
+                    class="large-label-size">
+                    <span class="currency-symbol-container"><span>$</span></span></label>
+              <div
+                    class="amount-other-wrapper">
+                    
+                    <input type="text" id="amount-other-input" class="medium-label-size" value="" placeholder="Other amount"
+                      data-cip-id="amount-other-input">
+                    </div> -->
+              </div>
+            </div>
+        <!-- <div class="row error-msg-row hide">
+          <div class="full">
+            <div id="error-msg">
+              <ul id="parsley-id-multiple-donation_amount" class="parsley-errors-list filled">
+                <li class="parsley-custom-error-message"></li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+        <div class="row payment-section">
+          <div class="col">
+            <h4 class="float-left choose-payment">Pay with credit card</h4>
+            <p id="secure-label" class="float-right"><i class="fa fa-lock"></i>
+              Secure
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col cc-button">
+            <label class="btn-lg btn-primary payment-type-label" for="payment-cc-payment-type">
+              <input type="radio" class="payment-type-radio payment-cc-input" name="payment-type" value="cc" id="payment-cc-payment-type">
+              <div>
+                <div class="medium-label-size donate-button">Donate</div>
+                <div class="payment-logos credit-card-logo"><p >&nbsp;</p></div>
+                <div class="medium-label-size less-text">Credit / debit card</div>
+              </div>
+            </label>
+          </div>
+          <div class="col">
+              <label class="btn-lg btn-primary payment-type-label" for="payment-cc-payment-type">
+                  <input type="radio" class="payment-type-radio payment-cc-input" name="payment-type" value="cc" id="payment-cc-payment-type">
+                  <div>
+                    <div class="medium-label-size donate-button">Donate</div>
+                    <div class="payment-logos paypal-logo"><p >&nbsp;</p></div>
+                    <div class="medium-label-size less-text">Credit / debit card</div>
+                  </div>
+                </label>
+              </div>
+        </div>
+      </div> 
+    </div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+</form>

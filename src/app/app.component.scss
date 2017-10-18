@@ -1,0 +1,110 @@
+// .donate-now-header {
+//     display: inline-block;
+// }
+
+.currency-dropdown {
+    // font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0;
+    margin-left: 5px;
+    display: inline-block;
+    // width: 120px;
+    vertical-align: top;
+}
+
+input.amount-radio, input.payment-type-radio {
+    // clip: rect(0,0,0,0);
+    display: none;
+}
+
+div.one-time {
+    padding-right: 10px;
+}
+
+div.additional-page {
+    background: #eaeff2;
+    border-radius: 6px;
+}
+
+div.additional-container {
+    padding: 30px;
+}
+
+div.main-page {
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 30px;
+}
+
+img.icon-variant {
+    display: none;
+}
+
+div.main-page div.row {
+    margin-bottom: 8px;
+}
+
+.amount-control {
+    position: relative;
+    width: 100%;
+}
+
+.amount-button {
+    text-align: center;
+    margin: 0px;
+    color: white;
+}
+
+// label#amount-other-label {
+//     padding: 3px;
+//     height: 35px;
+// }
+
+span#basic-addon1 {
+    height: 46px;
+}
+
+.amount-control:before {
+    content: "";
+    position: absolute;
+    border-radius: 0.3rem;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    left: 1px;
+    border: 1px solid hsla(0,0%,100%,.3);
+}
+
+label.payment-type-label {
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+.btn, .btn-lg {
+    background-image: linear-gradient(transparent,rgba(0,0,0,.1));    
+}
+
+.less-text {
+    display: none;
+}
+
+.payment-logos {
+    clear: both;
+    // width: 100%;
+    height: 45px;
+    background-size: 165px auto;
+    background-image: url(/assets/payment_logos_updated.png);
+    // margin: 0 auto;
+    background-repeat: no-repeat;
+
+}
+
+.credit-card-logo {
+    background-position: center -6px;
+}
+
+.paypal-logo {
+    background-position: center -108px;
+}
