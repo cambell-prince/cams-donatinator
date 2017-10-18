@@ -13,6 +13,15 @@
     vertical-align: top;
 }
 
+div.payment-section {
+    padding-top: 25px;
+
+    p#secure-label {
+        margin-top: 4px;
+        color: #d0d0d0;
+    }
+}
+
 input.amount-radio, input.payment-type-radio {
     // clip: rect(0,0,0,0);
     display: none;
