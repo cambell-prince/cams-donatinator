@@ -1,0 +1,6 @@
+{
+    "require": {
+        "silex/silex": "~2.0",
+        "stripe/stripe-php": "^5.3"
+    }
+}

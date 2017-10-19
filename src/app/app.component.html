@@ -109,7 +109,7 @@
         </div>
         <div class="row">
           <div class="col cc-button">
-            <label class="btn-lg btn-primary payment-type-label" for="payment-cc-payment-type">
+            <label class="btn-lg btn-primary payment-type-label" for="payment-cc-payment-type" (click)="clickStripe()">
               <input type="radio" class="payment-type-radio payment-cc-input" name="payment-type" value="cc" id="payment-cc-payment-type">
               <div>
                 <div class="medium-label-size donate-button">Donate</div>
@@ -119,15 +119,15 @@
             </label>
           </div>
           <div class="col">
-              <label class="btn-lg btn-primary payment-type-label" for="payment-cc-payment-type">
-                  <input type="radio" class="payment-type-radio payment-cc-input" name="payment-type" value="cc" id="payment-cc-payment-type">
-                  <div>
-                    <div class="medium-label-size donate-button">Donate</div>
-                    <div class="payment-logos paypal-logo"><p >&nbsp;</p></div>
-                    <div class="medium-label-size less-text">Credit / debit card</div>
-                  </div>
-                </label>
+            <label class="btn-lg btn-primary payment-type-label" for="payment-cc-payment-type">
+              <input type="radio" class="payment-type-radio payment-cc-input" name="payment-type" value="cc" id="payment-cc-payment-type">
+              <div>
+                <div class="medium-label-size donate-button">Donate</div>
+                <div class="payment-logos paypal-logo"><p >&nbsp;</p></div>
+                <div class="medium-label-size less-text">Credit / debit card</div>
               </div>
+            </label>
+          </div>
         </div>
       </div> 
     </div>

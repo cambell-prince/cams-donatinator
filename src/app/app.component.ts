@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppModel } from './app.model';
 
 @Component({
@@ -19,13 +20,11 @@ export class AppComponent {
     'thb': '฿',    
   }
 
-  amounts = ['1', '2', '3', '4'];
-
-  // paySelectionRow1 = [0, 1, 2];
-
   model: AppModel = new AppModel('usd', 'single', 'pay-1');
 
-  constructor() {
+  amounts: Array<string>;
+
+  constructor(private http: HttpClient) {
     this.updateAmounts();
   }
 
@@ -51,6 +50,23 @@ export class AppComponent {
     } else {
       this.amounts = onceAmounts[this.model.currency];      
     }
+  };
+
+  clickStripe() {
+    const data = {
+      'token': 'some_token'
+    }
+    this.http.post('http://localhost:8080/api/pay', data, {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      observe: 'response',
+    }).subscribe(data => {
+      console.log(data.status, data.body);
+    });
+    return false;
+  };
+
+  clickPaypal() {
+
   };
 
 }
