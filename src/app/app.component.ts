@@ -52,7 +52,7 @@ export class AppComponent {
     }
   };
 
-  clickStripe() {
+  clickCard() {
     const data = {
       'token': 'some_token'
     }
