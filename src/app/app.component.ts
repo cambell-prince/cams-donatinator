@@ -20,12 +20,36 @@ export class AppComponent {
     'thb': '฿',    
   }
 
-  model: AppModel = new AppModel('usd', 'single', 'pay-1');
+  model: AppModel = new AppModel('usd', 'single', 0);
 
   amounts: Array<string>;
 
+  private stripe;
+
   constructor(private http: HttpClient) {
+    var self = this;
     this.updateAmounts();
+    this.stripe = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_gyAceo53YlSpl7gQDV4PjMfS',
+      image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+      locale: 'auto',
+      token: function(token, tokenData) {
+        console.log('got token', token, 'data ', tokenData);
+        // You can access the token ID with `token.id`.
+        // Get the token ID to your server-side code for use.
+        const postData = {
+          'token': token.id,
+          'email': token.email,
+          'data': tokenData,
+        }
+        self.http.post('http://localhost:8080/api/pay/stripe', postData, {
+          headers: new HttpHeaders().set('Content-Type', 'application/json'),
+          observe: 'response',
+        }).subscribe(data => {
+          console.log(data.status, data.body);
+        });
+      }
+    });
   }
 
   updateAmounts() {
@@ -52,15 +76,22 @@ export class AppComponent {
     }
   };
 
-  clickCard() {
-    const data = {
-      'token': 'some_token'
+  amountForCard() {
+    console.log(this.model.paySelection);
+    if (Number(this.model.payAmount) > 0) {
+      return Number(this.model.payAmount) * 100;
     }
-    this.http.post('http://localhost:8080/api/pay', data, {
-      headers: new HttpHeaders().set('Content-Type', 'application/json'),
-      observe: 'response',
-    }).subscribe(data => {
-      console.log(data.status, data.body);
+    if (this.model.paySelection >= 0 && this.model.paySelection < 4) {
+      return Number(this.amounts[this.model.paySelection]) * 100;
+    }
+    return 2000;
+  }
+
+  clickCard() {
+    this.stripe.open({
+      name: 'Hannah',
+      description: 'Donation for Hannahs recovery',
+      amount: this.amountForCard()
     });
     return false;
   };

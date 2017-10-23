@@ -7,7 +7,7 @@ export class AppModel {
     constructor(
         public currency: string,
         public frequency: string,
-        public paySelection: string,
+        public paySelection: number,
     ) {
         this.payAmount = '';
         this.payVia = '';
