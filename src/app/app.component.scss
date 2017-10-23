@@ -2,31 +2,10 @@
 //     display: inline-block;
 // }
 
-.currency-dropdown {
-    // font-size: 14px;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 0;
-    margin-left: 5px;
-    display: inline-block;
-    // width: 120px;
-    vertical-align: top;
-}
-
-div.payment-section {
-    padding-top: 25px;
-
-    p#secure-label {
-        margin-top: 4px;
-        color: #d0d0d0;
-    }
-}
-
-input.amount-radio, input.payment-type-radio {
-    display: none;
-}
-
-div.one-time {
+// General layout. A slightly tighter grouping of the columns
+// Standard is 15px
+.col, .col-4, .col-8 {
+    padding-left: 10px;
     padding-right: 10px;
 }
 
@@ -53,6 +32,39 @@ div.main-page div.row {
     margin-bottom: 8px;
 }
 
+.currency-dropdown {
+    // font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0;
+    margin-left: 5px;
+    display: inline-block;
+    // width: 120px;
+    vertical-align: top;
+}
+
+.btn-lg {
+    padding: 0.5rem 0.5rem;
+}
+
+.amount-active {
+    background-color: #48acfa;
+    color: white;
+}
+
+div.payment-section {
+    padding-top: 25px;
+
+    p#secure-label {
+        margin-top: 4px;
+        color: #d0d0d0;
+    }
+}
+
+input.amount-radio, input.payment-type-radio {
+    display: none;
+}
+
 .amount-control {
     position: relative;
     width: 100%;
@@ -71,6 +83,7 @@ div.main-page div.row {
 
 span#basic-addon1 {
     height: 46px;
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.1));
 }
 
 .amount-control:before {
@@ -102,7 +115,7 @@ label.payment-type-label {
     clear: both;
     // width: 100%;
     height: 45px;
-    background-size: 165px auto;
+    background-size: 150px auto;
     background-image: url(/assets/payment_logos_updated.png);
     // margin: 0 auto;
     background-repeat: no-repeat;
@@ -114,5 +127,5 @@ label.payment-type-label {
 }
 
 .paypal-logo {
-    background-position: center -108px;
+    background-position: center -100px;
 }

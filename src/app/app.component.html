@@ -37,19 +37,19 @@
         </div>
           <div class="row donation-amount-row">
             <div class="col">
-              <label for="pay-0" class="btn-lg btn-secondary amount-button amount-control large-label-size">
+              <label for="pay-0" class="btn-lg btn-secondary amount-button amount-control" [class.amount-active]="model.paySelection==0">
                 <span>{{currencySymbols[model.currency]}}{{amounts[0]}}</span>
                 <input type="radio" class="amount-radio" name="pay_selection" value="0" [(ngModel)]="model.paySelection" id="pay-0">
               </label>
             </div>
             <div class="col">
-              <label for="pay-1" class="btn-lg btn-secondary amount-button amount-control large-label-size">
+              <label for="pay-1" class="btn-lg btn-secondary amount-button amount-control" [class.amount-active]="model.paySelection==1">
                 <span>{{currencySymbols[model.currency]}}{{amounts[1]}}</span>
                 <input type="radio" class="amount-radio" name="pay_selection" value="1" [(ngModel)]="model.paySelection" id="pay-1">
               </label>
             </div>
             <div class="col">
-              <label for="pay-2" class="btn-lg btn-secondary amount-button amount-control large-label-size">
+              <label for="pay-2" class="btn-lg btn-secondary amount-button amount-control" [class.amount-active]="model.paySelection==2">
                 <span>{{currencySymbols[model.currency]}}{{amounts[2]}}</span>
                 <input type="radio" class="amount-radio" name="pay_selection" value="2" [(ngModel)]="model.paySelection" id="pay-2">
               </label>
@@ -57,18 +57,18 @@
           </div>
           <div class="row donation-amount-row">
             <div class="col-4">
-              <label for="pay-3" class="btn-lg btn-secondary amount-button amount-control large-label-size">
+              <label for="pay-3" class="btn-lg btn-secondary amount-button amount-control" [class.amount-active]="model.paySelection==3">
                 <span>{{currencySymbols[model.currency]}}{{amounts[3]}}</span>
                 <input type="radio" class="amount-radio" name="pay_selection" value="3" [(ngModel)]="model.paySelection" id="pay-3">
               </label>
             </div>
             <div class="col-8">
               <div class="amount-other-container amount-control">
-                <!-- <label for="amount-other" class="btn-lg btn-secondary amount-button amount-control large-label-size" id="amount-other-label"> -->
-                  <input type="radio" class="amount-radio amount-control" id="pay-other" name="pay_selection" value="other">
-                    <div class="input-group">
-                      <span class="input-group-addon" id="basic-addon1">{{currencySymbols[model.currency]}}</span>
-                      <input type="text" class="form-control" placeholder="Other amount" aria-label="Username" aria-describedby="basic-addon1">
+                <!-- <label for="amount-other" class="btn-lg btn-secondary amount-button amount-control" id="amount-other-label"> -->
+                  <input type="radio" class="amount-radio amount-control" id="pay-other" name="pay_selection" value="other" [(ngModel)]="model.paySelection">
+                    <div class="input-group amount-control">
+                      <span class="input-group-addon" id="basic-addon1" [class.amount-active]="model.paySelection=='other'">{{currencySymbols[model.currency]}}</span>
+                      <input type="text" class="form-control" name="pay_amount" placeholder="Other amount" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="model.payAmount" (focus)="model.paySelection='other'">
                     </div>
                 <!-- </label> -->
               </div>
