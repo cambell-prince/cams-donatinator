@@ -38,14 +38,16 @@ export class AppComponent {
         // You can access the token ID with `token.id`.
         // Get the token ID to your server-side code for use.
         const postData = {
-          'token': token.id,
-          'email': token.email,
+          'token': token,
+          'amount': self.amountForCard(),
+          'currency': self.model.currency,
           'data': tokenData,
         }
         self.http.post('http://localhost:8080/api/pay/stripe', postData, {
           headers: new HttpHeaders().set('Content-Type', 'application/json'),
           observe: 'response',
         }).subscribe(data => {
+          // TODO Process the response, give thanks, and redirect.
           console.log(data.status, data.body);
         });
       }
@@ -77,12 +79,12 @@ export class AppComponent {
   };
 
   amountForCard() {
-    console.log(this.model.paySelection);
-    if (Number(this.model.payAmount) > 0) {
-      return Number(this.model.payAmount) * 100;
-    }
+    // console.log(this.model.paySelection);
     if (this.model.paySelection >= 0 && this.model.paySelection < 4) {
       return Number(this.amounts[this.model.paySelection]) * 100;
+    }
+    if (Number(this.model.payAmount) > 0) {
+      return Number(this.model.payAmount) * 100;
     }
     return 2000;
   }
@@ -90,8 +92,10 @@ export class AppComponent {
   clickCard() {
     this.stripe.open({
       name: 'Hannah',
-      description: 'Donation for Hannahs recovery',
-      amount: this.amountForCard()
+      description: 'Donation to Hannah Prince',
+      amount: this.amountForCard(),
+      currency: this.model.currency,
+      allowRememberMe: false
     });
     return false;
   };
