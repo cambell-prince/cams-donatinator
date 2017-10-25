@@ -34,7 +34,7 @@ export class AppComponent {
       image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
       locale: 'auto',
       token: function(token, tokenData) {
-        console.log('got token', token, 'data ', tokenData);
+        // console.log('got token', token, 'data ', tokenData);
         // You can access the token ID with `token.id`.
         // Get the token ID to your server-side code for use.
         const postData = {

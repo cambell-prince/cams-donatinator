@@ -6,12 +6,12 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "htdocs/donate",
+      "outDir": "htdocs/app",
       "assets": [
         "assets",
         "favicon.ico"
       ],
-      "index": "index.html",
+      "index": "app.view.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
@@ -56,6 +56,9 @@
   "defaults": {
     "styleExt": "scss",
     "component": {
+    },
+    "build": {
+      "baseHref": "/app/"
     }
   }
 }

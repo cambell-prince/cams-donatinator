@@ -4,10 +4,20 @@
   <div class="row">
     <div class="col-md">
       <div class="container additional-container">
-        <img class="heart-image icon-baseline" height="100" width="107" src="/assets/heart.svg">
-        <img class="heart-image icon-variant" height="100" width="107" src="/assets/pixel-heart.svg">
-        <div>
-          <span>We are proudly non-profit, non-corporate and non-compromised. Thousands of people like you help us stand up for an open Web for all. We rely on donations to carry out our mission to keep the Web open and free. Will you give today?</span>
+        <div class="row">
+          <div class="col">
+            <div class="circle-avatar" style="background-image:url(assets/profile.jpg)"></div>
+          </div>
+          <div class="col">
+              <img class="heart-image icon-baseline" height="100" width="107" src="assets/heart.svg">
+              <img class="heart-image icon-variant" height="100" width="107" src="assets/pixel-heart.svg">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p>Hannah's journey hit a bump in the road on Saturday, 30 September 2017, when she was hit by a car while cycling home. Her hospital bills are beyond what insurance will cover.</p>
+            <p>You can help by giving today.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -64,31 +74,15 @@
             <div class="col-8">
               <div class="amount-other-container amount-control">
                 <!-- <label for="amount-other" class="btn-lg btn-secondary amount-button amount-control" id="amount-other-label"> -->
-                  <input type="radio" class="amount-radio amount-control" id="pay-other" name="pay_selection" value="other" [(ngModel)]="model.paySelection">
+                  <input type="radio" class="amount-radio amount-control" id="pay-other" name="pay_selection" value="4" [(ngModel)]="model.paySelection">
                     <div class="input-group amount-control">
-                      <span class="input-group-addon" id="basic-addon1" [class.amount-active]="model.paySelection=='other'">{{currencySymbols[model.currency]}}</span>
-                      <input type="text" class="form-control" name="pay_amount" placeholder="Other amount" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="model.payAmount" (focus)="model.paySelection='other'">
+                      <span class="input-group-addon" id="basic-addon1" [class.amount-active]="model.paySelection==4">{{currencySymbols[model.currency]}}</span>
+                      <input type="text" class="form-control" name="pay_amount" placeholder="Other amount" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="model.payAmount" (focus)="model.paySelection=4">
                     </div>
                 <!-- </label> -->
               </div>
-              <!-- <div class="row">
-                <div class="col">
-                  {{model.paySelection}}
-                </div>
-              </div> -->
-<!--                 
-                
-                <label for="amount-other"
-                    class="large-label-size">
-                    <span class="currency-symbol-container"><span>$</span></span></label>
-              <div
-                    class="amount-other-wrapper">
-                    
-                    <input type="text" id="amount-other-input" class="medium-label-size" value="" placeholder="Other amount"
-                      data-cip-id="amount-other-input">
-                    </div> -->
-              </div>
             </div>
+          </div>
         <!-- <div class="row error-msg-row hide">
           <div class="full">
             <div id="error-msg">
@@ -118,7 +112,7 @@
             </label>
           </div>
           <div class="col">
-            <label class="btn-lg btn-primary payment-type-label" for="payment-cc-payment-type">
+            <label class="btn-lg btn-primary payment-type-label" for="payment-cc-payment-type" id="paypal">
               <input type="radio" class="payment-type-radio payment-cc-input" name="payment-type" value="cc" id="payment-cc-payment-type">
               <div>
                 <div class="medium-label-size donate-button">Donate</div>

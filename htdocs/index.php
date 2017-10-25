@@ -71,6 +71,41 @@ $app->error(function(\Exception $e) use ($app) {
 });
 
 // Routes
+$app->get('/', function (Request $request) use ($app) {
+    // Map the currency based on the remote ip address
+    $currencyMap = array(
+        'AU' => 'aud', 
+        'GB' => 'gbp', 
+        'NZ' => 'nzd', 
+        'UK' => 'gbp', 
+        'TH' => 'thb',
+        'US' => 'usd',
+    );
+    $currency = 'usd';
+    $client = new GuzzleHttp\Client();
+    // $remote_ip = '182.232.156.210';
+    $remote_ip = $_SERVER['REMOTE_ADDR'];
+    $geoip = $client->request('GET', 'https://freegeoip.net/json/' . $remote_ip);
+    if ($geoip->getStatusCode() == 200) {
+        $geodata = json_decode($geoip->getBody());
+        if (isset($currencyMap[$geodata->country_code])) {
+            $currency = $currencyMap[$geodata->country_code];
+        }
+    }
+
+    $data = array(
+        'currency' => $currency,
+        // 'geo' => $geodata,
+    );
+
+    // Display the view
+    $title = 'Some Title';
+    $app_data = json_encode($data, JSON_HEX_TAG);
+    ob_start();
+    include_once('app/app.view.html');
+    return ob_get_flush();
+});
+
 $app->post('/api/pay/stripe', function (Request $request) use ($app) {
     $token = $request->request->get('token');
     $amount = $request->request->get('amount');
