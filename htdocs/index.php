@@ -80,6 +80,9 @@ $app->get('/', function (Request $request) use ($app) {
         'UK' => 'gbp', 
         'TH' => 'thb',
         'US' => 'usd',
+        'FR' => 'eur',
+        'DE' => 'eur',
+        'GR' => 'eur',
     );
     $currency = 'usd';
     $client = new GuzzleHttp\Client();
@@ -95,6 +98,7 @@ $app->get('/', function (Request $request) use ($app) {
 
     $data = array(
         'currency' => $currency,
+        'stripe_key' => STRIPE_PUBLIC_API_KEY,
         // 'geo' => $geodata,
     );
 
@@ -146,7 +150,7 @@ $app->post('/api/pay/stripe', function (Request $request) use ($app) {
 
     $responseCode = 599; // Not expecting to return this
     // Make the charge via Stripe
-    Stripe::setApiKey(STRIPE_API_KEY);
+    Stripe::setApiKey(STRIPE_PRIVATE_API_KEY);
     try {
         $charge = \Stripe\Charge::create(array(
             "amount" => $amount,

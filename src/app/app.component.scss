@@ -81,10 +81,6 @@ div.main-page div.row {
     vertical-align: top;
 }
 
-.btn-lg {
-    padding: 0.5rem 0.5rem;
-}
-
 .amount-active {
     background-color: #48acfa;
     color: white;
@@ -141,8 +137,20 @@ label.payment-type-label {
     width: 100%;
 }
 
+.btn-lg {
+    padding: 0.5rem 0.5rem;
+}
+
 .btn, .btn-lg {
     background-image: linear-gradient(transparent,rgba(0,0,0,.1));    
+}
+
+.btn-primary {
+    color: white;
+
+    :hover {
+        color: white;        
+    }
 }
 
 .less-text {

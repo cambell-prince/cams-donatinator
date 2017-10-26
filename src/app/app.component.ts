@@ -24,13 +24,22 @@ export class AppComponent {
 
   amounts: Array<string>;
 
+  phase: string = 'donate';
+
+  result: string = 'unknown';
+
   private stripe;
 
   constructor(private http: HttpClient) {
     var self = this;
     this.updateAmounts();
+    var stripe_key = 'pk_test_gyAceo53YlSpl7gQDV4PjMfS';
+    if ((<any>window).app_data) {
+      this.model.currency = (<any>window).app_data.currency;
+      stripe_key = (<any>window).app_data.stripe_key;
+    }
     this.stripe = (<any>window).StripeCheckout.configure({
-      key: 'pk_test_gyAceo53YlSpl7gQDV4PjMfS',
+      key: stripe_key,
       image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
       locale: 'auto',
       token: function(token, tokenData) {
@@ -45,10 +54,16 @@ export class AppComponent {
         }
         self.http.post('http://localhost:8080/api/pay/stripe', postData, {
           headers: new HttpHeaders().set('Content-Type', 'application/json'),
-          observe: 'response',
+          observe: 'response', // TODO How do we catch 4xx errors?
         }).subscribe(data => {
-          // TODO Process the response, give thanks, and redirect.
+          // TODO On fail also display 'what we know' about the error.
           console.log(data.status, data.body);
+          self.phase = 'final';
+          if (data.status == 201) {
+            self.result = 'success';
+          } else {
+            self.result = 'fail';
+          }
         });
       }
     });
@@ -57,10 +72,10 @@ export class AppComponent {
   updateAmounts() {
     var onceAmounts = {
       'usd': ['20', '50', '100', '200'],
-      'aud': ['30', '50', '100', '200'],
-      'eur': ['20', '50', '100', '200'],
-      'gbp': ['20', '50', '100', '200'],
-      'nzd': ['20', '50', '100', '200'],
+      'aud': ['30', '60', '100', '200'],
+      'eur': ['15', '40', '80', '150'],
+      'gbp': ['15', '30', '60', '100'],
+      'nzd': ['30', '60', '100', '200'],
       'thb': ['500', '1000', '2000', '3000'],
     };
     var monthlyAmounts = {
@@ -87,6 +102,16 @@ export class AppComponent {
       return Number(this.model.payAmount) * 100;
     }
     return 2000;
+  }
+
+  clickTest() {
+    this.phase = this.phase == 'donate' ? 'final' : 'donate';
+    this.result = 'fail';
+  }
+
+  clickRetry() {
+    this.phase = 'donate';
+    this.result = 'unknown';
   }
 
   clickCard() {

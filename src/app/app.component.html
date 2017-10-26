@@ -22,7 +22,21 @@
       </div>
     </div>
     <div class="col main-page">
-      <div class="container">
+      <div class="container" id="final" *ngIf="phase=='final'">
+        <div class="row">
+          <div class="col">
+            <h3>Thanks for helping</h3>
+            <div id="success" *ngIf="result=='success'">
+              <p>Thanks so much for your support. We do appreciate it very much!</p>
+            </div>
+            <div id="fail" *ngIf="result=='fail'">
+              <p>Unfortunately we couldn't process your payment on that card.</p>
+              <button class="btn btn-primary" (click)="clickRetry()">Retry</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container" id="donate" *ngIf="phase!='final'">
         <div class="row">
           <div class="col-8">
             <h3 class="donate-now-header">Donate now</h3>
@@ -32,7 +46,7 @@
               <option *ngFor="let c of currencies" value="{{c}}">{{c}} &nbsp; {{currencySymbols[c]}}</option>
             </select>
           </div>
-          </div>
+        </div>
         <div class="row">
           <div class="col one-time">
             <input type="radio" class="form-control" name="frequency" class="one-time-payment" value="single" [(ngModel)]="model.frequency" (change)="updateAmounts()" id="one-time-payment-undefined">
