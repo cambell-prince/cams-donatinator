@@ -1,0 +1,186 @@
+// .donate-now-header {
+//     display: inline-block;
+// }
+
+#paypal {
+    display: none;
+}
+
+// General layout. A slightly tighter grouping of the columns
+// Standard is 15px
+.col, .col-4, .col-8 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+// https://stackoverflow.com/questions/21852978/bootstrap-3-using-img-circle-how-to-get-circle-from-non-square-image
+div.circle-avatar{
+    /* make it responsive */
+    max-width: 100%;
+    width:100px;
+    height:auto;
+    display:block;
+    /* div height to be the same as width*/
+    padding-top:100px;
+    
+    /* make it a circle */
+    border-radius:50%;
+    
+    /* Centering on image`s center*/
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    
+    /* it makes the clue thing, takes smaller dimension to fill div */
+    background-size: cover;
+    
+    /* it is optional, for making this div centered in parent*/
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+div.additional-container p {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+}
+
+div.additional-page {
+    background: #eaeff2;
+    border-radius: 6px;
+}
+
+div.additional-container {
+    padding: 30px;
+}
+
+div.main-page {
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 30px;
+}
+
+img.icon-variant {
+    display: none;
+}
+
+div.main-page div.row {
+    margin-bottom: 8px;
+}
+
+.currency-dropdown {
+    // font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0;
+    margin-left: 5px;
+    display: inline-block;
+    // width: 120px;
+    vertical-align: top;
+}
+
+.amount-active {
+    background-color: #48acfa !important;
+    color: white !important;
+}
+
+div.payment-section {
+    padding-top: 25px;
+
+    p#secure-label {
+        margin-top: 4px;
+        color: #d0d0d0;
+    }
+}
+
+input.amount-radio, input.payment-type-radio {
+    display: none;
+}
+
+.amount-control {
+    position: relative;
+    width: 100%;
+}
+
+.btn-secondary, .btn-secondary:hover {
+    text-align: center;
+    margin: 0px;
+    color: white !important;
+}
+
+
+
+// .amount-button {
+//     text-align: center;
+//     margin: 0px;
+//     color: white;
+
+// }
+
+// label#amount-other-label {
+//     padding: 3px;
+//     height: 35px;
+// }
+
+span#basic-addon1 {
+    height: 46px;
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.1));
+}
+
+.amount-control:before {
+    content: "";
+    position: absolute;
+    border-radius: 0.3rem;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    left: 1px;
+    border: 1px solid hsla(0,0%,100%,.3);
+}
+
+label.payment-type-label {
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+.btn-lg {
+    padding: 0.5rem 0.5rem;
+}
+
+.btn, .btn-lg {
+    background-image: linear-gradient(transparent,rgba(0,0,0,.1));    
+}
+
+.btn-primary {
+    color: white;
+
+    :hover {
+        color: white;        
+    }
+}
+
+.less-text {
+    display: none;
+}
+
+.payment-logos {
+    clear: both;
+    // width: 100%;
+    height: 45px;
+    background-size: 150px auto;
+    background-image: url(../assets/payment_logos_updated.png);
+    // margin: 0 auto;
+    background-repeat: no-repeat;
+
+}
+
+.credit-card-logo {
+    background-position: center -6px;
+}
+
+.paypal-logo {
+    background-position: center -100px;
+}
