@@ -103,7 +103,7 @@ $app->get('/', function (Request $request) use ($app) {
     );
 
     // Display the view
-    $title = 'Some Title';
+    $title = "Support Hannah's Journey";
     $app_data = json_encode($data, JSON_HEX_TAG);
     ob_start();
     include_once('app/app.view.html');

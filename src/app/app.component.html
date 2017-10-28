@@ -22,21 +22,25 @@
       </div>
     </div>
     <div class="col main-page">
-      <div class="container" id="final" *ngIf="phase=='final'">
+      <div class="container" id="final" *ngIf="model.phase=='final'">
         <div class="row">
           <div class="col">
             <h3>Thanks for helping</h3>
-            <div id="success" *ngIf="result=='success'">
+            <div id="success" *ngIf="model.result=='success'">
               <p>Thanks so much for your support. We do appreciate it very much!</p>
             </div>
-            <div id="fail" *ngIf="result=='fail'">
-              <p>Unfortunately we couldn't process your payment on that card.</p>
+            <div id="fail" *ngIf="model.result=='fail'">
+              <p>Unfortunately we couldn't process your payment on that card. Here's what we know:</p>
+              <div class="alert alert-warning">
+                <p>Code: {{model.resultCode}}</p>
+                <p>Info: {{model.resultMessage}}</p>
+              </div>
               <button class="btn btn-primary" (click)="clickRetry()">Retry</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="container" id="donate" *ngIf="phase!='final'">
+      <div class="container" id="donate" *ngIf="model.phase!='final'">
         <div class="row">
           <div class="col-8">
             <h3 class="donate-now-header">Donate now</h3>
@@ -47,7 +51,7 @@
             </select>
           </div>
         </div>
-        <div class="row">
+        <div class="row" style="display: none;">
           <div class="col one-time">
             <input type="radio" class="form-control" name="frequency" class="one-time-payment" value="single" [(ngModel)]="model.frequency" (change)="updateAmounts()" id="one-time-payment-undefined">
             <label for="one-time-payment-undefined" class="medium-label-size">One time</label>
@@ -136,6 +140,13 @@
             </label>
           </div>
         </div>
+        <div class="row">
+            <div class="col">
+                <p><span>Your payment details will be processed by <a href="https://stripe.com/privacy/">Stripe</a> (for credit/debit cards)
+                   <!-- or <a href="https://www.paypal.com/us/webapps/mpp/ua/privacy-full">Paypal</a>,  -->
+                   and a record of your donation will be stored by the Princes.</span></p>
+            </div>
+        </div>  
       </div> 
     </div>
   </div>

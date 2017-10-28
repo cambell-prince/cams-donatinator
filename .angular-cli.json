@@ -58,7 +58,7 @@
     "component": {
     },
     "build": {
-      "baseHref": "/app/"
+      "baseHref": "app/"
     }
   }
 }

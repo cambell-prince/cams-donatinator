@@ -82,8 +82,8 @@ div.main-page div.row {
 }
 
 .amount-active {
-    background-color: #48acfa;
-    color: white;
+    background-color: #48acfa !important;
+    color: white !important;
 }
 
 div.payment-section {
@@ -104,11 +104,20 @@ input.amount-radio, input.payment-type-radio {
     width: 100%;
 }
 
-.amount-button {
+.btn-secondary, .btn-secondary:hover {
     text-align: center;
     margin: 0px;
-    color: white;
+    color: white !important;
 }
+
+
+
+// .amount-button {
+//     text-align: center;
+//     margin: 0px;
+//     color: white;
+
+// }
 
 // label#amount-other-label {
 //     padding: 3px;
@@ -162,7 +171,7 @@ label.payment-type-label {
     // width: 100%;
     height: 45px;
     background-size: 150px auto;
-    background-image: url(/assets/payment_logos_updated.png);
+    background-image: url(../assets/payment_logos_updated.png);
     // margin: 0 auto;
     background-repeat: no-repeat;
 
