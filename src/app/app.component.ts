@@ -21,7 +21,7 @@ export class AppComponent {
     'thb': '฿',    
   }
 
-  model: AppModel = new AppModel('krw', 'single', 0);
+  model: AppModel = new AppModel('usd', 'single', 0);
 
   amounts: Array<string>;
 
