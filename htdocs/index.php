@@ -83,6 +83,8 @@ $app->get('/', function (Request $request) use ($app) {
         'FR' => 'eur',
         'DE' => 'eur',
         'GR' => 'eur',
+        'KP' => 'krw',
+        'KR' => 'krw',
     );
     $currency = 'usd';
     $client = new GuzzleHttp\Client();
