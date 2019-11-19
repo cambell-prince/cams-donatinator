@@ -204,7 +204,16 @@ export class AppComponent {
     this.model.reset();
   }
 
+  onRecaptcha(response: string) {
+    this.model.recaptcha = response;
+  }
+
   clickCard() {
+    event.preventDefault();
+    if (this.model.recaptcha == null) {
+      alert("Please click the reCaptcha checkbox before clicking 'Donate'");
+      return;
+    }
     this.stripe.open({
       name: 'Hannah',
       description: 'Donation to Hannah Prince',
@@ -216,7 +225,11 @@ export class AppComponent {
   };
 
   clickPaypal() {
-
+    event.preventDefault();
+    if (this.model.recaptcha == null) {
+      alert("Please click the reCaptcha checkbox before clicking 'Donate'");
+      return;
+    }
   };
 
 }

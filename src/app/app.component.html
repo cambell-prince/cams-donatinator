@@ -78,12 +78,14 @@
               </label>
             </div>
             <div class="col-8">
-              <div class="amount-other-container amount-control">
+                <div class="amount-other-container amount-control">
                 <!-- <label for="amount-other" class="btn-lg btn-secondary amount-button amount-control" id="amount-other-label"> -->
-                  <input type="radio" class="amount-radio amount-control" id="pay-other" name="pay_selection" value="4" [(ngModel)]="model.paySelection">
+                    <input type="radio" class="amount-radio amount-control" id="pay-other" name="pay_selection" value="4" [(ngModel)]="model.paySelection" />
                     <div class="input-group amount-control">
-                      <span class="input-group-addon" id="basic-addon1" [class.amount-active]="model.paySelection==4">{{currencySymbols[model.currency]}}</span>
-                      <input type="text" class="form-control" name="pay_amount" placeholder="Other amount" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="model.payAmount" (focus)="model.paySelection=4">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1" [class.amount-active]="model.paySelection==4">{{currencySymbols[model.currency]}}</span>
+                      </div>
+                      <input type="text" class="form-control" id="amount-other" name="pay_amount" placeholder="Other amount" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="model.payAmount" (focus)="model.paySelection=4">
                     </div>
                 <!-- </label> -->
               </div>
@@ -107,8 +109,16 @@
           </div>
         </div>
         <div class="row">
+          <div class="col recaptcha">
+            <re-captcha
+              (resolved)="onRecaptcha($event)"
+              siteKey="6Lc4a8MUAAAAAIkiz2VYFADtCt-pZ-YHFaMKJpwB"
+            ></re-captcha>
+          </div>
+        </div>
+        <div class="row">
           <div class="col cc-button">
-            <label class="btn-lg btn-primary payment-type-label" for="payment-cc-payment-type" (click)="clickCard()">
+            <label class="btn-lg btn-primary payment-type-label" [class.disabled]="!model.recaptcha" for="payment-cc-payment-type" (click)="clickCard()">
               <input type="radio" class="payment-type-radio payment-cc-input" name="payment-type" value="cc" id="payment-cc-payment-type">
               <div>
                 <div class="medium-label-size donate-button">Donate</div>
@@ -119,7 +129,7 @@
           </div>
           <div class="col">
             <label class="btn-lg btn-primary payment-type-label" for="payment-cc-payment-type" id="paypal">
-              <input type="radio" class="payment-type-radio payment-cc-input" name="payment-type" value="cc" id="payment-cc-payment-type">
+              <input type="radio" disabled class="payment-type-radio payment-cc-input" name="payment-type" value="cc" id="payment-cc-payment-type">
               <div>
                 <div class="medium-label-size donate-button">Donate</div>
                 <div class="payment-logos paypal-logo"><p >&nbsp;</p></div>
