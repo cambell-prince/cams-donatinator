@@ -90,7 +90,7 @@ $app->get('/', function (Request $request) use ($app) {
     $client = new GuzzleHttp\Client();
     // $remote_ip = '182.232.156.210';
     $remote_ip = $_SERVER['REMOTE_ADDR'];
-    $geoip = $client->request('GET', 'https://freegeoip.net/json/' . $remote_ip);
+    $geoip = $client->request('GET', 'http://api.ipstack.com/' . $remote_ip . '?access_key=' . GEO_API_KEY);
     if ($geoip->getStatusCode() == 200) {
         $geodata = json_decode($geoip->getBody());
         if (isset($currencyMap[$geodata->country_code])) {
