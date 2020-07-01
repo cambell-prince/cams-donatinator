@@ -12,6 +12,8 @@ export class AppModel {
 
     public resultMessage: string;
 
+    public recaptcha: string;
+
     constructor(
         public currency: string,
         public frequency: string,
@@ -27,6 +29,7 @@ export class AppModel {
         this.result = 'unknown';
         this.resultCode = 0;
         this.resultMessage = '';
+        this.recaptcha = null;
     }
 
 }
