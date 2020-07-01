@@ -105,7 +105,7 @@ $app->get('/', function (Request $request) use ($app) {
     );
 
     // Display the view
-    $title = "Support Hannah's Journey";
+    $title = "Donate for Rachel Choo";
     $app_data = json_encode($data, JSON_HEX_TAG);
     ob_start();
     include_once('app/app.view.html');
@@ -158,7 +158,7 @@ $app->post('/api/pay/stripe', function (Request $request) use ($app) {
             "amount" => $amount,
             "currency" => $currency,
             "source" => $token['id'],
-            "description" => "Donation to Hannah Prince"
+            "description" => "Donation in memory of Rachel Choo"
         ));
         if ($charge['paid'] === true) {
             $payment->status = 'ok';

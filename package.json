@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "upload": "rsync --exclude-from \"upload-exclude.txt\" --rsync-path \"sudo -u vu2039 rsync\" -rzlt --delete --stats htdocs/ root@saygoweb.com:/var/www/virtual/princes.co.nz/htdocs/hannah/"
+    "upload": "rsync --exclude-from \"upload-exclude.txt\" --rsync-path \"sudo -u vu2069 rsync\" -rzlt --delete --stats htdocs/ root@saygoweb.com:/var/www/virtual/cmcchurch.org/htdocs/rachel/"
   },
   "private": true,
   "dependencies": {

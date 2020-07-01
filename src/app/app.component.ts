@@ -50,7 +50,7 @@ export class AppComponent {
           'data': tokenData,
         }
         // var apiURL = 'http://localhost:8080/api/pay/stripe';
-        var apiURL = 'https://www.princes.co.nz/hannah/api/pay/stripe';
+        var apiURL = 'https://cmcchurch.org/rachel/api/pay/stripe';
         self.http.post(apiURL, postData, {
           headers: new HttpHeaders().set('Content-Type', 'application/json'),
           observe: 'response', // TODO How do we catch 4xx errors?
@@ -215,8 +215,8 @@ export class AppComponent {
       return;
     }
     this.stripe.open({
-      name: 'Hannah',
-      description: 'Donation to Hannah Prince',
+      name: 'Rachel',
+      description: 'Donation in memory of Rachel Choo',
       amount: this.amountForCard(),
       currency: this.model.currency,
       allowRememberMe: false
